@@ -66,9 +66,9 @@ def affiche():
     for i,j in test.items():
         count+=1
         if count<3:
-            affichage+= i+":"+j+"\t\t"
+            affichage+= "<<"+i+">>:<<"+j+">>"+"\t\t"
         else:
-            affichage+= "\n\n"
+            affichage+= "<<"+i+">>:<<"+j+">>"+"\n\n"
             count=0
     showinfo("Affichage des mots de passe",affichage)
 
@@ -220,11 +220,17 @@ def change():
         change_password_label.pack(padx=5, pady=5)
         change_password.pack(padx=5, pady=5)
         
-        valider_password.pack(side=BOTTOM,padx=5, pady=5)
         to_delete.pack(side=BOTTOM,padx=5, pady=5)
+        go_back.pack(side=BOTTOM,padx=5, pady=5)
+        valider_password.pack(side=BOTTOM,padx=5, pady=5)
+        
     else:
         showinfo("Modification impossible","Utilisateur inexistant !")
         admin()
+        
+def retour():
+    change_username.delete(0,END)
+    test_login()
 
 fenetre = Tk()
 fenetre.title("Password")
@@ -299,4 +305,5 @@ change_password = Entry(Frame_user_change, width=30)
 
 valider_password=Button(Frame_user_change, text="Modifier le mot de passe", bg="blue" , command=lambda: modifier_admin_password(change_password.get()))
 to_delete=Button(Frame_user_change, text="supprimer", bg="blue" , command= lambda: delete( admin_change_user.get()))
+go_back=Button(Frame_user_change, text="Retour", bg="blue" , command= retour)
 fenetre.mainloop()
