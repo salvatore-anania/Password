@@ -8,7 +8,6 @@ from tkinter.messagebox import *
 def test_user(user):
     list=lire()
     user_exist=user in list.keys()
-    print(user_exist)
     if user_exist:
         return user
     else:
@@ -32,7 +31,7 @@ def create():
     password=password_get.get()
     verified_password=test_password(password)
     if verified_password:
-        showinfo("VALIDE !", "Mot de passe enregistré !")
+        showinfo("VALIDE !", "Utilisateur enregistré !")
         save(user.get(),encrypt(password))
 
 def test_login():
@@ -189,7 +188,7 @@ def admin():
     list_password.pack(side = TOP,padx=5, pady=5)
     Frame_admin_connected.pack( padx=30, pady=30)
     test.pack(side = TOP,padx=5, pady=5)
-    admin_connected_label.config(text=user.get())
+    admin_connected_label.config(font=("Arial", 20),text=user.get())
     admin_connected_label.pack(side = TOP,padx=5, pady=5) 
     
     change_user.pack(side = TOP,padx=5, pady=5)
@@ -221,8 +220,8 @@ def change():
         change_password.pack(padx=5, pady=5)
         
         to_delete.pack(side=BOTTOM,padx=5, pady=5)
-        go_back.pack(side=BOTTOM,padx=5, pady=5)
         valider_password.pack(side=BOTTOM,padx=5, pady=5)
+        go_back.pack(side=BOTTOM,padx=5, pady=5)
         
     else:
         showinfo("Modification impossible","Utilisateur inexistant !")
@@ -243,52 +242,52 @@ Frame_connexion= Frame(fenetre,bg='grey')
 
 Frame_user = Frame(Frame_connexion, borderwidth=2, relief=GROOVE)
 Frame_user.pack( padx=30, pady=30)
-Label(Frame_user, text="Utilisateur :").pack(side = TOP,padx=5, pady=5)
-user = Entry(Frame_user, width=30)
+Label(Frame_user, font=("Arial", 20),text="Utilisateur :").pack(side = TOP,padx=5, pady=5)
+user = Entry(Frame_user,font=("Arial", 20), width=30)
 user.pack(side = TOP,padx=5, pady=5)
-password_label=Label(Frame_user, text="Mot de passe :")
+password_label=Label(Frame_user, font=("Arial", 20),text="Mot de passe :")
 password_label.pack(padx=5, pady=5)
-password_get = Entry(Frame_user, width=30)
+password_get = Entry(Frame_user,font=("Arial", 20), width=30)
 password_get.pack(padx=5, pady=5)
-genere=Button(Frame_user, text="Generer un mot de passe", bg="blue" , command=generate)
+genere=Button(Frame_user, font=("Arial", 20),text="Generer un mot de passe", bg="grey" , command=generate)
 genere.pack(padx=5, pady=5)
-connect=Button(Frame_user, text="Connexion", bg="blue" , command=test_login)
+connect=Button(Frame_user, font=("Arial", 20),text="Connexion", bg="grey" , command=test_login)
 connect.pack(side=BOTTOM,padx=5, pady=5)
-creation=Button(Frame_user, text="Créer le compte.", bg="green",command=create)
+creation=Button(Frame_user, font=("Arial", 20),text="Créer le compte.", bg="green",command=create)
 creation.pack(side = BOTTOM, padx=5, pady=5)
 Frame_connexion.pack()
 
-Button(fenetre, text="Quitter", bg="red" , command=fenetre.quit).pack(side=BOTTOM,padx=5, pady=5)
+Button(fenetre, font=("Arial", 20),text="Quitter", bg="red" , command=fenetre.quit).pack(side=BOTTOM,padx=5, pady=5)
 
 Frame_connected= Frame(fenetre,bg='grey')
 
 #agencement de la frame connected
 Frame_user_connected = Frame(Frame_connected, borderwidth=2, relief=GROOVE)
-label_name=Label(Frame_user_connected, text="Nom d'utilisateur :")
-change_name = Entry(Frame_user_connected, width=30)
-valider_name=Button(Frame_user_connected, text="Changer de nom", bg="blue" , command=lambda: modifier_user( user.get() , change_name.get()))
+label_name=Label(Frame_user_connected, font=("Arial", 20),text="Nom d'utilisateur :")
+change_name = Entry(Frame_user_connected,font=("Arial", 20), width=30)
+valider_name=Button(Frame_user_connected, font=("Arial", 20),text="Changer de nom", bg="grey" , command=lambda: modifier_user( user.get() , change_name.get()))
 
-password_label=Label(Frame_user_connected, text="Modifier mot de passe :")
-password_modifier = Entry(Frame_user_connected, width=30)
+password_label=Label(Frame_user_connected, font=("Arial", 20),text="Modifier mot de passe :")
+password_modifier = Entry(Frame_user_connected, font=("Arial", 20),width=30)
 
-connect=Button(Frame_user_connected, text="Valider", bg="blue" , command=lambda: modifier_password(password_modifier.get()))
-deconnect=Button(Frame_user_connected, text="Deconnexion", bg="red" , command=log_out)
+connect=Button(Frame_user_connected, font=("Arial", 20),text="Changer le mot de passe", bg="grey" , command=lambda: modifier_password(password_modifier.get()))
+deconnect=Button(Frame_user_connected, font=("Arial", 20),text="Deconnexion", bg="red" , command=log_out)
 
 Frame_admin= Frame(fenetre,bg='grey')
 #agencement de la frame admin
-list_password=Button(Frame_admin, text="Afficher les mots de passe", command=affiche)
+list_password=Button(Frame_admin, font=("Arial", 20),text="Afficher les mots de passe", command=affiche)
 Frame_admin_connected = Frame(Frame_admin, borderwidth=2, relief=GROOVE)
-test=Label(Frame_admin_connected, text="Nom d'utilisateur :")
-admin_connected_label=Label(Frame_admin_connected, text="")
+test=Label(Frame_admin_connected, font=("Arial", 20),text="Nom d'utilisateur :")
+admin_connected_label=Label(Frame_admin_connected, font=("Arial", 20),text="")
 
-change_user=Label(Frame_admin_connected, text="Modifier un utilisateur :")
-admin_change_user = Entry(Frame_admin_connected, width=30)
-change_user_button=Button(Frame_admin_connected, text="Modifier l'utilisateur", bg="blue" , command=change)
+change_user=Label(Frame_admin_connected, font=("Arial", 20),text="Modifier un utilisateur :")
+admin_change_user = Entry(Frame_admin_connected,font=("Arial", 20), width=30)
+change_user_button=Button(Frame_admin_connected, font=("Arial", 20),text="Modifier l'utilisateur", bg="grey" , command=change)
 
-admin_password_label=Label(Frame_admin_connected, text="Modifier mot de passe administrateur :")
-admin_password_modifier = Entry(Frame_admin_connected, width=30)
-admin_deconnect= Button(Frame_admin_connected, text="Deconnexion", bg="red" , command=log_out)
-admin_connect= Button(Frame_admin_connected, text="Modifier mot de passe administrateur", bg="blue" , command=lambda: modifier_password(admin_password_modifier.get()))
+admin_password_label=Label(Frame_admin_connected, font=("Arial", 20),text="Modifier mot de passe administrateur :")
+admin_password_modifier = Entry(Frame_admin_connected,font=("Arial", 20), width=30)
+admin_deconnect= Button(Frame_admin_connected, font=("Arial", 20),text="Deconnexion", bg="red" , command=log_out)
+admin_connect= Button(Frame_admin_connected, font=("Arial", 20),text="Modifier mot de passe administrateur", bg="grey" , command=lambda: modifier_password(admin_password_modifier.get()))
 
 
 Frame_change= Frame(fenetre,bg='grey')
@@ -296,14 +295,14 @@ Frame_change= Frame(fenetre,bg='grey')
 #agencement de la frame change
 Frame_user_change = Frame(Frame_change, borderwidth=2, relief=GROOVE)
 
-change_user_label= Label(Frame_user_change, text="Changer le nom d'utilisateur :")
-change_username = Entry(Frame_user_change, width=30)
-valider_user=Button(Frame_user_change, text="Changer le nom d'utilisateur", bg="blue" , command=lambda: modifier_user_admin( admin_change_user.get() , change_username.get()))
+change_user_label= Label(Frame_user_change, font=("Arial", 20),text="Changer le nom d'utilisateur :")
+change_username = Entry(Frame_user_change,font=("Arial", 20), width=30)
+valider_user=Button(Frame_user_change, font=("Arial", 20),text="Changer le nom d'utilisateur", bg="grey" , command=lambda: modifier_user_admin( admin_change_user.get() , change_username.get()))
 
-change_password_label=Label(Frame_user_change, text="Modifier le mot de passe:")
-change_password = Entry(Frame_user_change, width=30)
+change_password_label=Label(Frame_user_change, font=("Arial", 20),text="Modifier le mot de passe:")
+change_password = Entry(Frame_user_change,font=("Arial", 20), width=30)
 
-valider_password=Button(Frame_user_change, text="Modifier le mot de passe", bg="blue" , command=lambda: modifier_admin_password(change_password.get()))
-to_delete=Button(Frame_user_change, text="supprimer", bg="blue" , command= lambda: delete( admin_change_user.get()))
-go_back=Button(Frame_user_change, text="Retour", bg="blue" , command= retour)
+valider_password=Button(Frame_user_change, font=("Arial", 20),text="Modifier le mot de passe", bg="grey" , command=lambda: modifier_admin_password(change_password.get()))
+to_delete=Button(Frame_user_change, font=("Arial", 20),text="supprimer", bg="grey" , command= lambda: delete( admin_change_user.get()))
+go_back=Button(Frame_user_change, font=("Arial", 20),text="Retour", bg="red" , command= retour)
 fenetre.mainloop()
