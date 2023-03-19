@@ -1,5 +1,6 @@
 import re
 import hashlib
+import time
 import json
 from random import *
 from tkinter import * 
@@ -137,16 +138,16 @@ def modifier_admin_password(passord_to_modify):
         change_password.delete(0,END)
 
 def generate():
-    seed()
+    seed(time.time())
     mdp=[]
     for lower in range(5):
         mdp+=chr(randint(97,122))
-    for lower in range(5):
+    for upper in range(5):
         mdp+=chr(randint(65,90))
-    for lower in range(5):
+    for special in range(5):
         my_list=[33,35,36,37,38,42,64,94]
         mdp+=chr(choice(my_list))
-    for lower in range(5):
+    for number in range(5):
         mdp+=str(randint(0,100))
     shuffle(mdp)
     generated = ''.join(mdp)
