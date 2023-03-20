@@ -22,8 +22,23 @@ def test_password(password):
     one_lower= re.search('[a-z]',password)==None
     one_number=re.search('\d',password)==None
     password_exist=encrypt(password) in list.values()
-    if len(password)<8 or password_exist or one_upper or one_lower or one_special or one_number:
-        showinfo("ERREUR !", "Mot de passe invalide !")
+    if len(password)<8 :
+        showinfo("ERREUR !", "Mot de passe trop court 8 caractère minimum !")
+        return False
+    if password_exist :
+        showinfo("ERREUR !", "Mot de passe dèjà existant !")
+        return False
+    if one_upper:
+        showinfo("ERREUR !", "Mot de passe invalide : il au moins une majuscule !")
+        return False
+    if one_lower:
+        showinfo("ERREUR !", "Mot de passe invalide : il au moins une minuscule !")
+        return False
+    if one_special:
+        showinfo("ERREUR !", "Mot de passe invalide : il au moins un caractère spécial ! \nparmis ceux là : @#$%\^&\*]! ")
+        return False
+    if one_number:
+        showinfo("ERREUR !", "Mot de passe invalide  : il au moins un chiffre !")
         return False
     else:
         return encrypt(password)
